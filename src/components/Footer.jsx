@@ -7,10 +7,6 @@ export default function Footer() {
   return (
     <footer>
     <p>Copyright Asmir Kopić © {currentYear}</p>
-
     </footer>
-
-
-    
   )
 }
