@@ -42,7 +42,6 @@ function App() {
         <h1>{count}</h1>
         <button onClick={decrese}>-</button>
         <button onClick={increase}>+</button>
-        <h1>{timeNow}</h1>
       </div>
       
       <Footer />
