@@ -1,11 +1,15 @@
 import React, { useState } from 'react'
+import { Prev } from 'react-bootstrap/esm/PageItem';
 import notes from '../notes'
 
 export default function Note(props) {
 
-  const [heading, setHeading] = useState("");
   const [isMouseOver, setIsMouseOver] = useState(false);
-  const [name, setName] = useState("") 
+  const [contact, setContact] = useState({
+    fName: "",
+    lName: "",
+    email: ""
+  })
 
   function handleMouseOver() {
     setIsMouseOver(true)
@@ -15,23 +19,45 @@ export default function Note(props) {
     setIsMouseOver(false)
   }
 
-  function setHeadingText(){
-    setHeading(name)
-  }
-
   function handleChange(event) {
-    setName(event.target.value)
+    
+    const value = event.target.value;
+    const name = event.target.name;
+    
+    setContact({
+      ...contact,
+      [name]: value
+    });
+
   }
 
+
+  // function handleChange(evt: any) {
+  //   const value =
+  //     evt.target.type === "checkbox" ? evt.target.checked : evt.target.value;
+  //   setState({
+  //     ...state,
+  //     [evt.target.name]: value
+  //   });
+  // }
   
+  
+
+
 
   return (
     <div className='note'>
-        <h1>{heading}</h1>
+        <h1>Hello {contact.fName} {contact.lName}</h1>
+        <h3>{contact.email}</h3>
         <h1>{props.title}</h1>
         <p>{props.content}</p>
-        <input onChange={handleChange} type="text" placeholder="Enter heading" value={name} />
-        <button onClick={setHeadingText} style={{backgroundColor: isMouseOver ? "green" : "#459a47"}} onMouseEnter={handleMouseOver} onMouseOut={handleMouseOut}>Submit</button>
+        <input onChange={handleChange} type="text" placeholder="Enter first name" name="fName" />
+        <input onChange={handleChange} type="text" placeholder="Enter last name" name='lName' />
+        <input onChange={handleChange} type="text" placeholder="Enter email" name='email' />
+
+
+
+        <button style={{backgroundColor: isMouseOver ? "green" : "#459a47"}} onMouseEnter={handleMouseOver} onMouseOut={handleMouseOut}>Submit</button>
     </div>
   )
 }
