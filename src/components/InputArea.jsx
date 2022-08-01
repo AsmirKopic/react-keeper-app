@@ -9,6 +9,8 @@ export default function InputArea(props) {
         content: ""
     });
 
+    const [isExpanded, setIsExpanded] = useState(false);
+
     function handleChange(event) {
         const {name, value} = event.target;
 
@@ -27,14 +29,20 @@ export default function InputArea(props) {
         setNote({
             title: "",
             content:""
-        })
+        });
+        
+        setIsExpanded(false);
+    }
+
+    function expandArea() {
+        setIsExpanded(true);
     }
 
     return (
         <div>
             <form className="create-note">
-                <input onChange={handleChange} name="title" value={note.title} placeholder='Title'/>
-                <textarea onChange={handleChange} name='content' value={note.content} placeholder='Take a note..' rows={3} />
+                {isExpanded && <input onChange={handleChange} name="title" value={note.title} placeholder='Title'/>}
+                <textarea onClick={expandArea} onChange={handleChange} name='content' value={note.content} placeholder='Take a note..' rows={isExpanded ? 3 : 1} />
                 <Fab onClick={submitNote}><AddIcon /></Fab>
             </form>
         </div>
