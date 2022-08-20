@@ -2,7 +2,7 @@
 
 ## Similar to Google's Keep app.
 
-Created this app after being inroduced to the fundamentals of React developement.
+Created this app after being introduced to the fundamentals of React developement.
 
 #### Live demo deployed via Netlify --> https://keeper-app-6af0d0.netlify.app
 
